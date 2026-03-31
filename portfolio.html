@@ -1,0 +1,1073 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Алина Славина — Визажист & Стилист по волосам</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg: #0A0A0A;
+            --bg-card: #111111;
+            --bg-light: #1A1A1A;
+            --text: #F0EDED;
+            --text-muted: #888888;
+            --accent: #E63232;
+            --accent-dark: #C42828;
+            --white: #FFFFFF;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        /* ===== NAVIGATION ===== */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            padding: 24px 48px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(10, 10, 10, 0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            transition: all 0.3s ease;
+        }
+
+        nav.scrolled {
+            padding: 16px 48px;
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+        }
+
+        .nav-logo {
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            font-weight: 700;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--text);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 36px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        /* ===== HERO ===== */
+        .hero {
+            min-height: 100vh;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            position: relative;
+        }
+
+        .hero-image-side {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-image-side img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: grayscale(10%) contrast(1.05);
+        }
+
+        .hero-name-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 0 48px 48px;
+            z-index: 2;
+        }
+
+        .hero-name-overlay h1 {
+            font-family: 'Inter', sans-serif;
+            font-size: clamp(48px, 7vw, 96px);
+            font-weight: 900;
+            line-height: 0.95;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: -0.02em;
+            mix-blend-mode: normal;
+        }
+
+        .hero-info-side {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 48px;
+            background: var(--white);
+            color: var(--bg);
+        }
+
+        .hero-info-content {
+            max-width: 400px;
+        }
+
+        .hero-role {
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 32px;
+        }
+
+        .hero-nav-links {
+            list-style: none;
+            margin-bottom: 48px;
+        }
+
+        .hero-nav-links li {
+            margin-bottom: 4px;
+        }
+
+        .hero-nav-links a {
+            font-size: 15px;
+            font-weight: 500;
+            color: var(--bg);
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            transition: color 0.3s;
+        }
+
+        .hero-nav-links a:hover {
+            color: var(--accent);
+        }
+
+        .hero-description {
+            font-size: 13px;
+            font-weight: 400;
+            line-height: 1.8;
+            color: #555;
+            margin-bottom: 32px;
+        }
+
+        .hero-contacts {
+            display: flex;
+            gap: 16px;
+        }
+
+        .hero-contacts a {
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--bg);
+            text-decoration: none;
+            padding: 12px 24px;
+            border: 1.5px solid var(--bg);
+            transition: all 0.3s;
+        }
+
+        .hero-contacts a:hover {
+            background: var(--accent);
+            color: var(--white);
+            border-color: var(--accent);
+        }
+
+        .hero-arrow {
+            position: absolute;
+            bottom: 48px;
+            right: calc(50% + 48px);
+            color: var(--white);
+            font-size: 24px;
+            opacity: 0.5;
+            animation: arrowBounce 2s infinite;
+            text-decoration: none;
+            z-index: 3;
+        }
+
+        @keyframes arrowBounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(8px); }
+        }
+
+        /* ===== SECTION COMMON ===== */
+        section {
+            padding: 120px 48px;
+        }
+
+        .section-header {
+            margin-bottom: 64px;
+        }
+
+        .section-label {
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 16px;
+        }
+
+        .section-title {
+            font-family: 'Inter', sans-serif;
+            font-size: clamp(32px, 4vw, 56px);
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: -0.02em;
+            line-height: 1.1;
+        }
+
+        /* ===== ABOUT ===== */
+        .about {
+            background: var(--bg);
+        }
+
+        .about-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .about-text p {
+            font-size: 15px;
+            font-weight: 300;
+            line-height: 2;
+            color: var(--text-muted);
+            margin-bottom: 24px;
+        }
+
+        .about-text p:last-child {
+            margin-bottom: 0;
+        }
+
+        .about-stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 32px;
+        }
+
+        .stat-item {
+            padding: 32px;
+            border: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .stat-number {
+            font-size: 36px;
+            font-weight: 800;
+            color: var(--accent);
+            margin-bottom: 8px;
+        }
+
+        .stat-label {
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+        }
+
+        /* ===== CLIENTS ===== */
+        .clients {
+            background: var(--bg-light);
+        }
+
+        .clients-marquee {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0;
+        }
+
+        .client-item {
+            font-family: 'Inter', sans-serif;
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--text);
+            padding: 20px 32px;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            transition: color 0.3s;
+        }
+
+        .client-item:hover {
+            color: var(--accent);
+        }
+
+        .client-separator {
+            color: var(--accent);
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+            padding: 0 4px;
+            user-select: none;
+        }
+
+        /* ===== PORTFOLIO ===== */
+        .portfolio {
+            background: var(--bg);
+        }
+
+        /* Editorial grid — magazine style with mixed sizes */
+        .editorial-grid {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .editorial-row {
+            display: grid;
+            gap: 4px;
+            margin-bottom: 4px;
+        }
+
+        .editorial-row.r-2col {
+            grid-template-columns: 1fr 1fr;
+        }
+
+        .editorial-row.r-3col {
+            grid-template-columns: 1fr 1fr 1fr;
+        }
+
+        .editorial-row.r-hero {
+            grid-template-columns: 1.4fr 1fr;
+        }
+
+        .editorial-row.r-hero-r {
+            grid-template-columns: 1fr 1.4fr;
+        }
+
+        .editorial-row.r-3-uneven {
+            grid-template-columns: 1fr 1.2fr 1fr;
+        }
+
+        .editorial-row.r-wide-narrow {
+            grid-template-columns: 2fr 1fr;
+        }
+
+        .editorial-row.r-narrow-wide {
+            grid-template-columns: 1fr 2fr;
+        }
+
+        .editorial-item {
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            background: var(--bg-card);
+        }
+
+        .editorial-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.6s ease, filter 0.6s ease;
+            filter: grayscale(10%);
+        }
+
+        .editorial-item:hover img {
+            transform: scale(1.04);
+            filter: grayscale(0%);
+        }
+
+        .editorial-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 32px 24px;
+            background: linear-gradient(transparent, rgba(0,0,0,0.6));
+            opacity: 0;
+            transition: opacity 0.4s;
+        }
+
+        .editorial-item:hover .editorial-overlay {
+            opacity: 1;
+        }
+
+        .editorial-overlay span {
+            font-family: 'Inter', sans-serif;
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--white);
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+        }
+
+        /* Text block inside grid */
+        .editorial-text-block {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 48px;
+            background: var(--bg-card);
+        }
+
+        .editorial-text-block .etb-label {
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 16px;
+        }
+
+        .editorial-text-block .etb-title {
+            font-family: 'Inter', sans-serif;
+            font-size: 28px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: -0.01em;
+            line-height: 1.2;
+            margin-bottom: 16px;
+        }
+
+        .editorial-text-block .etb-desc {
+            font-size: 13px;
+            font-weight: 300;
+            color: var(--text-muted);
+            line-height: 1.8;
+        }
+
+        /* ===== CONTACT ===== */
+        .contact {
+            background: var(--accent);
+            color: var(--white);
+            text-align: center;
+        }
+
+        .contact .section-label {
+            color: rgba(255,255,255,0.6);
+        }
+
+        .contact .section-title {
+            color: var(--white);
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 48px;
+            margin-top: 48px;
+            flex-wrap: wrap;
+        }
+
+        .contact-link {
+            text-decoration: none;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+            transition: opacity 0.3s;
+        }
+
+        .contact-link:hover {
+            opacity: 0.7;
+        }
+
+        .contact-link-label {
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.6);
+        }
+
+        .contact-link-value {
+            font-family: 'Inter', sans-serif;
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--white);
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background: var(--bg);
+            border-top: 1px solid rgba(255,255,255,0.06);
+            padding: 24px 48px;
+            text-align: center;
+        }
+
+        footer p {
+            font-size: 11px;
+            letter-spacing: 0.1em;
+            color: var(--text-muted);
+        }
+
+        /* ===== LIGHTBOX ===== */
+        .lightbox {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 200;
+            background: rgba(0,0,0,0.95);
+            align-items: center;
+            justify-content: center;
+            cursor: zoom-out;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .lightbox.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .lightbox img {
+            max-width: 90vw;
+            max-height: 90vh;
+            object-fit: contain;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 900px) {
+            nav {
+                padding: 16px 24px;
+            }
+
+            section {
+                padding: 80px 24px;
+            }
+
+            .hero {
+                grid-template-columns: 1fr;
+                min-height: auto;
+            }
+
+            .hero-image-side {
+                height: 70vh;
+            }
+
+            .hero-info-side {
+                padding: 48px 24px;
+            }
+
+            .hero-name-overlay {
+                padding: 0 24px 24px;
+            }
+
+            .hero-name-overlay h1 {
+                font-size: 48px;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 48px;
+            }
+
+            .editorial-row.r-2col,
+            .editorial-row.r-hero,
+            .editorial-row.r-hero-r,
+            .editorial-row.r-wide-narrow,
+            .editorial-row.r-narrow-wide {
+                grid-template-columns: 1fr;
+            }
+
+            .editorial-row.r-3col,
+            .editorial-row.r-3-uneven {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .nav-links {
+                display: none;
+            }
+
+            .editorial-row.r-3col,
+            .editorial-row.r-3-uneven {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-contacts {
+                flex-direction: column;
+            }
+
+            .hero-contacts a {
+                text-align: center;
+            }
+
+            .contact-links {
+                flex-direction: column;
+                gap: 32px;
+            }
+
+            .about-stats {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* ===== PRINT STYLES ===== */
+        @media print {
+            * {
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+
+            nav { display: none !important; }
+
+            body { font-size: 14px; }
+
+            section { padding: 40px 48px; }
+
+            .hero {
+                min-height: 100vh;
+                page-break-after: always;
+                break-after: page;
+            }
+
+            .about {
+                padding: 40px 48px 20px;
+                page-break-after: avoid;
+            }
+
+            .clients {
+                padding: 20px 48px 40px;
+                page-break-after: always;
+                break-after: page;
+            }
+
+            .portfolio {
+                page-break-before: always;
+                break-before: page;
+                padding: 40px 48px;
+            }
+
+            .editorial-item img {
+                filter: none;
+            }
+
+            .editorial-overlay { display: none; }
+
+            .contact {
+                page-break-before: always;
+                break-before: page;
+                min-height: 50vh;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .fade-in {
+                opacity: 1 !important;
+                transform: none !important;
+            }
+
+            .lightbox { display: none !important; }
+        }
+
+        /* ===== ANIMATIONS ===== */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav>
+        <a href="#" class="nav-logo">Алина Славина</a>
+        <ul class="nav-links">
+            <li><a href="#about">Обо мне</a></li>
+            <li><a href="#clients">Клиенты</a></li>
+            <li><a href="#portfolio">Портфолио</a></li>
+            <li><a href="#contact">Контакты</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero — split layout like references -->
+    <section class="hero" id="hero">
+        <div class="hero-image-side">
+            <img src="photo_1_1.png" alt="Алина Славина">
+            <div class="hero-name-overlay">
+                <h1>АЛИНА<br>СЛАВИНА</h1>
+            </div>
+        </div>
+        <div class="hero-info-side">
+            <div class="hero-info-content">
+                <p class="hero-role">Визажист & Стилист по волосам</p>
+                <ul class="hero-nav-links">
+                    <li><a href="#about">Обо мне</a></li>
+                    <li><a href="#portfolio">Портфолио</a></li>
+                    <li><a href="#contact">Контакты</a></li>
+                </ul>
+                <p class="hero-description">
+                    Коммерческие и рекламные съёмки: fashion, beauty, кампейны, каталоги, имиджевые проекты.
+                    Работаю на результат в кадре с пониманием задач фотографа, арт-директора и ретушёра.
+                </p>
+                <div class="hero-contacts">
+                    <a href="https://instagram.com/slavinamua" target="_blank">Instagram</a>
+                    <a href="https://t.me/ohslavina" target="_blank">Telegram</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About -->
+    <section class="about" id="about">
+        <div class="about-grid">
+            <div>
+                <div class="section-header fade-in">
+                    <p class="section-label">Обо мне</p>
+                    <h2 class="section-title">Опыт &<br>Навыки</h2>
+                </div>
+                <div class="about-text fade-in">
+                    <p>
+                        Большой опыт работы в коммерческих съёмках на постоянной основе. Хорошее понимание
+                        «коммерческой» картинки для разных запросов и под разные задачи. Умение делать тонкую,
+                        прозрачную кожу даже для сложных beauty-образов.
+                    </p>
+                    <p>
+                        Умею работать в режиме многозадачности: быстрая смена образов, работа с разными типами
+                        внешности и света. Идеальный «макияж без макияжа» и сложные креативные решения.
+                        Большой опыт работы с детьми и селебрити.
+                    </p>
+                </div>
+            </div>
+            <div class="about-stats fade-in">
+                <div class="stat-item">
+                    <div class="stat-number">10+</div>
+                    <div class="stat-label">Лет опыта</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">500+</div>
+                    <div class="stat-label">Проектов</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">50+</div>
+                    <div class="stat-label">Брендов</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">∞</div>
+                    <div class="stat-label">Креатив</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Clients -->
+    <section class="clients" id="clients">
+        <div class="section-header fade-in" style="text-align:center;">
+            <p class="section-label">Клиенты</p>
+            <h2 class="section-title">Бренды & Проекты</h2>
+        </div>
+        <div class="clients-marquee fade-in">
+            <span class="client-item">ЦУМ</span>
+            <span class="client-separator">/</span>
+            <span class="client-item">Rendez-Vous</span>
+            <span class="client-separator">/</span>
+            <span class="client-item">Avon</span>
+            <span class="client-separator">/</span>
+            <span class="client-item">Яндекс</span>
+            <span class="client-separator">/</span>
+            <span class="client-item">Macallan</span>
+            <span class="client-separator">/</span>
+            <span class="client-item">Divage</span>
+            <span class="client-separator">/</span>
+            <span class="client-item">ARIVE</span>
+            <span class="client-separator">/</span>
+            <span class="client-item">Bioderma</span>
+            <span class="client-separator">/</span>
+            <span class="client-item">Nuself</span>
+            <span class="client-separator">/</span>
+            <span class="client-item">Райффайзенбанк</span>
+        </div>
+    </section>
+
+    <!-- Portfolio — editorial grid -->
+    <section class="portfolio" id="portfolio">
+        <div class="section-header fade-in" style="text-align:center;">
+            <p class="section-label">Работы</p>
+            <h2 class="section-title">Портфолио</h2>
+        </div>
+
+        <div class="editorial-grid">
+            <!-- Row 1: hero left + text -->
+            <div class="editorial-row r-hero fade-in">
+                <div class="editorial-item" onclick="openLightbox(this)">
+                    <img src="photo_2_1.png" alt="Beauty съёмка" loading="lazy">
+                    <div class="editorial-overlay"><span>Beauty</span></div>
+                </div>
+                <div class="editorial-text-block">
+                    <span class="etb-label">Creative Makeup</span>
+                    <h3 class="etb-title">Beauty &<br>Editorial</h3>
+                    <p class="etb-desc">Креативный макияж, тонкая работа с кожей, сложные beauty-образы для fashion и рекламных съёмок.</p>
+                </div>
+            </div>
+
+            <!-- Row 2: 3 col — new creative photos -->
+            <div class="editorial-row r-3col fade-in">
+                <div class="editorial-item" onclick="openLightbox(this)">
+                    <img src="Доп фотки/IMG_6460.JPG" alt="Creative — neon paint" loading="lazy">
+                    <div class="editorial-overlay"><span>Creative</span></div>
+                </div>
+                <div class="editorial-item" onclick="openLightbox(this)">
+                    <img src="Доп фотки/IMG_6465.JPG" alt="Beauty — purple eye" loading="lazy">
+                    <div class="editorial-overlay"><span>Beauty</span></div>
+                </div>
+                <div class="editorial-item" onclick="openLightbox(this)">
+                    <img src="Доп фотки/IMG_6466.JPG" alt="Beauty — violet smoky" loading="lazy">
+                    <div class="editorial-overlay"><span>Beauty</span></div>
+                </div>
+            </div>
+
+            <!-- Row 3: text + hero right -->
+            <div class="editorial-row r-hero-r fade-in">
+                <div class="editorial-text-block">
+                    <span class="etb-label">Fashion</span>
+                    <h3 class="etb-title">Кампейны &<br>Каталоги</h3>
+                    <p class="etb-desc">Коммерческие съёмки для ведущих брендов. Работа с различными типами внешности и стилями.</p>
+                </div>
+                <div class="editorial-item" onclick="openLightbox(this)">
+                    <img src="photo_6_1.png" alt="Креативный образ" loading="lazy">
+                    <div class="editorial-overlay"><span>Creative</span></div>
+                </div>
+            </div>
+
+            <!-- Row 4: 2 col — fashion/editorial new photos -->
+            <div class="editorial-row r-2col fade-in">
+                <div class="editorial-item" onclick="openLightbox(this)">
+                    <img src="Доп фотки/IMG_6462.JPG" alt="Fashion editorial" loading="lazy">
+                    <div class="editorial-overlay"><span>Fashion</span></div>
+                </div>
+                <div class="editorial-item" onclick="openLightbox(this)">
+                    <img src="Доп фотки/IMG_6463.JPG" alt="Fashion портрет" loading="lazy">
+                    <div class="editorial-overlay"><span>Editorial</span></div>
+                </div>
+            </div>
+
+            <!-- Row 5: 3 col uneven -->
+            <div class="editorial-row r-3-uneven fade-in">
+                <div class="editorial-item" onclick="openLightbox(this)">
+                    <img src="photo_4_1.png" alt="Fashion каталог" loading="lazy">
+                    <div class="editorial-overlay"><span>Fashion</span></div>
+                </div>
+                <div class="editorial-item" onclick="openLightbox(this)">
+                    <img src="Доп фотки/IMG_6472.JPG" alt="Creative makeup — color block" loading="lazy">
+                    <div class="editorial-overlay"><span>Creative</span></div>
+                </div>
+                <div class="editorial-item" onclick="openLightbox(this)">
+                    <img src="photo_3_1.png" alt="Стилизация волос" loading="lazy">
+                    <div class="editorial-overlay"><span>Hair Styling</span></div>
+                </div>
+            </div>
+
+            <!-- Row 6: wide + narrow -->
+            <div class="editorial-row r-wide-narrow fade-in">
+                <div class="editorial-item" onclick="openLightbox(this)">
+                    <img src="Доп фотки/IMG_6464.JPG" alt="Fashion duo" loading="lazy">
+                    <div class="editorial-overlay"><span>Editorial</span></div>
+                </div>
+                <div class="editorial-item" onclick="openLightbox(this)">
+                    <img src="Доп фотки/IMG_6467.JPG" alt="Blue metallic" loading="lazy">
+                    <div class="editorial-overlay"><span>Beauty</span></div>
+                </div>
+            </div>
+
+            <!-- Row 7: 3 col -->
+            <div class="editorial-row r-3col fade-in">
+                <div class="editorial-item" onclick="openLightbox(this)">
+                    <img src="photo_7_1.png" alt="Fashion съёмка" loading="lazy">
+                    <div class="editorial-overlay"><span>Fashion</span></div>
+                </div>
+                <div class="editorial-item" onclick="openLightbox(this)">
+                    <img src="photo_5_1.png" alt="Editorial" loading="lazy">
+                    <div class="editorial-overlay"><span>Editorial</span></div>
+                </div>
+                <div class="editorial-item" onclick="openLightbox(this)">
+                    <img src="Доп фотки/IMG_6474.JPG" alt="Beauty — smoky eyes" loading="lazy">
+                    <div class="editorial-overlay"><span>Beauty</span></div>
+                </div>
+            </div>
+
+            <!-- Row 8: narrow + wide -->
+            <div class="editorial-row r-narrow-wide fade-in">
+                <div class="editorial-item" onclick="openLightbox(this)">
+                    <img src="Доп фотки/IMG_6461.JPG" alt="Beauty — orange lip" loading="lazy">
+                    <div class="editorial-overlay"><span>Beauty</span></div>
+                </div>
+                <div class="editorial-item" onclick="openLightbox(this)">
+                    <img src="Доп фотки/IMG_6468.JPG" alt="Editorial — teal" loading="lazy">
+                    <div class="editorial-overlay"><span>Editorial</span></div>
+                </div>
+            </div>
+
+            <!-- Row 9: 3 col -->
+            <div class="editorial-row r-3col fade-in">
+                <div class="editorial-item" onclick="openLightbox(this)">
+                    <img src="photo_2_2.png" alt="Beauty съёмка" loading="lazy">
+                    <div class="editorial-overlay"><span>Beauty</span></div>
+                </div>
+                <div class="editorial-item" onclick="openLightbox(this)">
+                    <img src="Доп фотки/IMG_6469.JPG" alt="Creative — graphic face" loading="lazy">
+                    <div class="editorial-overlay"><span>Creative</span></div>
+                </div>
+                <div class="editorial-item" onclick="openLightbox(this)">
+                    <img src="photo_3_2.png" alt="Кампейн" loading="lazy">
+                    <div class="editorial-overlay"><span>Campaign</span></div>
+                </div>
+            </div>
+
+            <!-- Row 10: hero left -->
+            <div class="editorial-row r-hero fade-in">
+                <div class="editorial-item" onclick="openLightbox(this)">
+                    <img src="Доп фотки/IMG_6471.JPG" alt="Creative — braids art" loading="lazy">
+                    <div class="editorial-overlay"><span>Creative</span></div>
+                </div>
+                <div class="editorial-item" onclick="openLightbox(this)">
+                    <img src="Доп фотки/IMG_6473.JPG" alt="Fashion — pink coat" loading="lazy">
+                    <div class="editorial-overlay"><span>Fashion</span></div>
+                </div>
+            </div>
+
+            <!-- Row 11: 2 col — remaining originals -->
+            <div class="editorial-row r-2col fade-in">
+                <div class="editorial-item" onclick="openLightbox(this)">
+                    <img src="photo_8_1.png" alt="Fashion editorial" loading="lazy">
+                    <div class="editorial-overlay"><span>Editorial</span></div>
+                </div>
+                <div class="editorial-item" onclick="openLightbox(this)">
+                    <img src="photo_9_1.png" alt="Fashion съёмка" loading="lazy">
+                    <div class="editorial-overlay"><span>Fashion</span></div>
+                </div>
+            </div>
+
+            <!-- Row 12: 3 col — last originals -->
+            <div class="editorial-row r-3col fade-in">
+                <div class="editorial-item" onclick="openLightbox(this)">
+                    <img src="photo_8_2.png" alt="Lumique" loading="lazy">
+                    <div class="editorial-overlay"><span>Lumique</span></div>
+                </div>
+                <div class="editorial-item" onclick="openLightbox(this)">
+                    <img src="photo_5_2.png" alt="Editorial" loading="lazy">
+                    <div class="editorial-overlay"><span>Editorial</span></div>
+                </div>
+                <div class="editorial-item" onclick="openLightbox(this)">
+                    <img src="photo_7_2.png" alt="Fashion съёмка" loading="lazy">
+                    <div class="editorial-overlay"><span>Fashion</span></div>
+                </div>
+            </div>
+
+            <!-- Row 13: last one centered -->
+            <div class="editorial-row r-3col fade-in">
+                <div class="editorial-item" onclick="openLightbox(this)">
+                    <img src="photo_9_2.png" alt="Fashion каталог" loading="lazy">
+                    <div class="editorial-overlay"><span>Fashion</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="contact" id="contact">
+        <div class="section-header fade-in">
+            <p class="section-label">Связаться</p>
+            <h2 class="section-title">Контакты</h2>
+        </div>
+        <div class="contact-links fade-in">
+            <a href="https://instagram.com/slavinamua" target="_blank" class="contact-link">
+                <span class="contact-link-label">Instagram</span>
+                <span class="contact-link-value">@slavinamua</span>
+            </a>
+            <a href="https://t.me/ohslavina" target="_blank" class="contact-link">
+                <span class="contact-link-label">Telegram</span>
+                <span class="contact-link-value">@ohslavina</span>
+            </a>
+            <a href="tel:+79055553263" class="contact-link">
+                <span class="contact-link-label">Телефон</span>
+                <span class="contact-link-value">+7 905 555 32 63</span>
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Алина Славина. Все права защищены.</p>
+    </footer>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+        <img id="lightbox-img" src="" alt="">
+    </div>
+
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            document.querySelector('nav').classList.toggle('scrolled', window.scrollY > 50);
+        });
+
+        // Fade-in on scroll
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+        // Lightbox
+        function openLightbox(item) {
+            const img = item.querySelector('img');
+            const lightbox = document.getElementById('lightbox');
+            document.getElementById('lightbox-img').src = img.src;
+            lightbox.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            document.getElementById('lightbox').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeLightbox();
+        });
+    </script>
+
+</body>
+</html>
